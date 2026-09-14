@@ -1,0 +1,30 @@
+import pandas as pd
+
+# Create a DataFrame with missing values
+data = {
+    "Name": ["Vignesh", "Vishal", "Mani", "Akash", "Sofan"],
+    "Age": [27, None, 25, 24, None],
+    "City": ["Chennai", "Madurai", None, "Coimbatore", "Chennai"],
+    "Salary": [25000, 30000, None, 28000, 32000]
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame:")
+print(df)
+
+# Check missing values
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Fill missing Age with average age
+df["Age"] = df["Age"].fillna(df["Age"].mean())
+
+# Fill missing City with "Unknown"
+df["City"] = df["City"].fillna("Unknown")
+
+# Fill missing Salary with average salary
+df["Salary"] = df["Salary"].fillna(df["Salary"].mean())
+
+print("\nDataFrame After Handling Missing Values:")
+print(df)
